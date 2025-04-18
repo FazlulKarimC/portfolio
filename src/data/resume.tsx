@@ -18,10 +18,14 @@ export const DATA = {
     "Typescript",
     "JavaScript",
     "TailwindCSS",
+    "Shadcn",
+    "Prisma",
     "Node.js",
     "Express.js",
     "Python",
     "Machine Learning",
+    "langchain",
+    "Gemini AI",
     "HTML",
     "CSS",
     "C++",
@@ -105,12 +109,49 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "PaperSightAI",
+      href: "https://papersight.vercel.app",
+      dates: "Jan 2025 - Present",
+      active: true,
+      description:
+        `A full-stack document summarization platform (PaperSight AI) using Next.js 15, React 19 and Gemini AI
+         with secure Clerk authentication, achieving 98% accuracy in document processing. Created responsive 
+         interfaces with ShadcN components and TailwindCSS 4 that boosted user engagement by 40%, while implementing 
+         a robust TypeScript backend with PostgreSQL and Langchain for efficient PDF parsing and secure file 
+         handling supporting up to 20MB uploads with SEO-friendly export capabilities.`,
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "PostgreSQL",
+        "NeonDB",
+        "Langchain",
+        "Clerk",
+        "TailwindCSS",
+        "Shadcn",
+        "Node.js",
+        "Gemini AI"],
+      links: [
+        {
+          type: "Website",
+          href: "https://papersight.vercel.app",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/FazlulKarimC/PaperSight_AI",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/paperSight.png",
+      video: "",
+    },
+    {
       title: "QuickPay",
       href: "https://github.com/FazlulKarimC/QuickPay",
       dates: "Dec 2024 - Jan 2025",
       active: true,
       description:
-        "Engineered a full-stack payment platform similar to PayTM, featuring authentication, secure transactions, transaction history, and bank linking. Built the backend with Express.js, PostgreSQL, and Prisma, integrating webhooks for real-time bank API communication. Designed a scalable frontend using React, Next.js, and TypeScript, improving page load time by 10%. Optimized deployment with Docker and Turborepo, reducing build times by 20% and deployment time by 15%.",
+        "A full-stack payment platform similar to PayTM, featuring authentication, secure transactions, transaction history, and bank linking. Built the backend with Express.js, PostgreSQL, and Prisma, integrating webhooks for real-time bank API communication. Designed a scalable frontend using React, Next.js, and TypeScript, improving page load time by 10%. Optimized deployment with Docker and Turborepo, reducing build times by 20% and deployment time by 15%.",
       technologies: [
         "Next.js",
         "Typescript",
