@@ -142,7 +142,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/papersight.png",
+      image: "/paperSight.png",
       video: "",
     },
     {
