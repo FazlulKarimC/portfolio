@@ -1,7 +1,5 @@
 # Fazlul's Portfolio
 
-![Portfolio Banner](public/sleek.png)
-
 Welcome to my personal portfolio built with cutting-edge technologies to showcase my projects, resume, and blog. This application is designed with a modern UI using [Next.js](https://nextjs.org/), [shadcn/ui](https://ui.shadcn.com/), and [Magic UI](https://magicui.design/), and is deployed on [Vercel](https://vercel.com/).
 
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
