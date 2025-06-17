@@ -4,7 +4,7 @@ import { HomeIcon, NotebookIcon } from "lucide-react";
 export const DATA = {
   name: "Fazlul Karim Choudhury",
   initials: "FKC",
-  url: "https://dillion.io",
+  url: "https://fazlul.vercel.app",
   location: "Assam, India",
   locationLink: "https://maps.app.goo.gl/Qq2xZv7BppgadHW76",
   description:
@@ -26,8 +26,8 @@ export const DATA = {
     "Machine Learning",
     "langchain",
     "Gemini AI",
-    "HTML",
-    "CSS",
+    "HTML5",
+    "CSS3",
     "C++",
     "Java",
     "Spring Boot",
@@ -93,7 +93,7 @@ export const DATA = {
         and tracking system. My responsibilities included designing responsive front-end components using ReactJS, JavaScript,
         and TypeScript, as well as building secure back-end functionalities with Spring Boot, Spring Security, and Spring Data JPA. 
         These efforts helped streamline HR operations, reduce manual tasks by 40%, and improve overall operational 
-        efficiency by 35% for a user base of 50,000 employees.`,
+        efficiency by 35% for a user base of 5,000 employees.`,
     }
   ],
   education: [
@@ -114,11 +114,11 @@ export const DATA = {
       dates: "Jan 2025 - Present",
       active: true,
       description:
-        `A full-stack document summarization platform (PaperSight AI) using Next.js 15, React 19 and Gemini AI
-         with secure Clerk authentication, achieving 98% accuracy in document processing. Created responsive 
-         interfaces with ShadcN components and TailwindCSS 4 that boosted user engagement by 40%, while implementing 
-         a robust TypeScript backend with PostgreSQL and Langchain for efficient PDF parsing and secure file 
-         handling supporting up to 20MB uploads with SEO-friendly export capabilities.`,
+        `PaperSight AI is an innovative web application designed to simplify the process of summarizing 
+        and managing PDF documents using advanced AI technology. Built with Next.js, PaperSight AI leverages 
+        the power of Google's Gemini AI model to provide concise summaries of uploaded PDFs, making it an 
+        invaluable tool for researchers, students, and professionals who need to quickly extract key information 
+        from lengthy documents`,
       technologies: [
         "Next.js",
         "Typescript",
@@ -142,7 +142,42 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/paperSight.png",
+      image: "/papersight.png",
+      video: "",
+    },
+    {
+      title: "Sleek",
+      href: "https://e-commerce-app-fazlul.vercel.app/",
+      dates: "May 2025 - Present",
+      active: true,
+      description:
+        `Sleek, full-stack Ecommerce Application built with a modern tech stack! Dive into a seamless
+         shopping experience with a polished Next.js frontend and a powerful Node.js/Express backend, 
+         all tied together with a PostgreSQL database managed via Prisma ORM`,
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "PostgreSQL",
+        "NeonDB",
+        "Prisma",
+        "TailwindCSS",
+        "Shadcn",
+        "Express.js",
+        "Node.js",
+        "Gemini AI"],
+      links: [
+        {
+          type: "Website",
+          href: "https://e-commerce-app-fazlul.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/FazlulKarimC/eCommerce_app",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/sleek.png",
       video: "",
     },
     {
