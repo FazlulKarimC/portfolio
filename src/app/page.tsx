@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
+import { Icons } from "@/components/icons";
 
 
 const BLUR_FADE_DELAY = 0.04;
@@ -208,14 +209,14 @@ export default function Page() {
                 Get in Touch
               </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Want to chat? Just shoot me a dm{" "}
+                Want to chat? Just shoot me a {" "}
                 <Link
                   href={DATA.contact.social.X.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-500 hover:underline"
                 >
-                  with a direct question on twitter
+                  <span>dm on <Icons.x className="inline h-4 w-4" /></span>
                 </Link>{" "}
                 and I&apos;ll respond whenever I can.
               </p>
