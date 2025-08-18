@@ -63,8 +63,8 @@ function UserMessage({ message, index, isMobile = false, prefersReducedMotion = 
                 "rounded-lg bg-primary text-primary-foreground rounded-br-sm shadow-sm",
                 // Responsive sizing
                 isMobile ? [
-                    "max-w-[85%] p-3",
-                    "text-base leading-relaxed"
+                    "max-w-[90%] p-2.5",
+                    "text-sm leading-relaxed"
                 ] : [
                     "max-w-[80%] p-3",
                     "text-sm leading-relaxed"
@@ -108,20 +108,20 @@ function AIMessage({ message, index, isMobile = false, prefersReducedMotion = fa
             )}>
                 <Avatar className={cn(
                     "mt-1 flex-shrink-0",
-                    isMobile ? "h-9 w-9" : "h-8 w-8"
+                    isMobile ? "h-7 w-7" : "h-8 w-8"
                 )}>
                     <AvatarImage src={DATA.avatarUrl} alt={DATA.name} />
-                    <AvatarFallback className="text-xs bg-muted-foreground/10 text-muted-foreground">
+                    <AvatarFallback className="text-[10px] bg-muted-foreground/10 text-muted-foreground">
                         {DATA.initials}
                     </AvatarFallback>
                 </Avatar>
                 <div className={cn(
                     "rounded-lg bg-muted text-foreground rounded-bl-sm shadow-sm",
-                    isMobile ? "p-3" : "p-3"
+                    isMobile ? "p-2.5" : "p-3"
                 )}>
                     <p className={cn(
                         "break-words whitespace-pre-wrap",
-                        isMobile ? "text-base leading-relaxed" : "text-sm leading-relaxed"
+                        isMobile ? "text-sm leading-relaxed" : "text-sm leading-relaxed"
                     )}>
                         {message.content}
                     </p>

@@ -17,11 +17,10 @@ export function AIChatComponent({
     return (
         <div className={cn(
             "mx-auto w-full",
-            // Responsive max-width and padding
-            "max-w-2xl",
-            "px-3 sm:px-4 lg:px-0",
-            // Mobile-specific adjustments
-            isMobile && "px-2",
+            // Desktop/tablet: centered with max width and padding
+            !isMobile && "max-w-2xl px-3 sm:px-4 lg:px-0",
+            // Mobile: full-width edge-to-edge
+            isMobile && "max-w-none px-0",
             className
         )}>
             <AnimatePresence mode="wait">
