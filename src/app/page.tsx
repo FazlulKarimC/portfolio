@@ -5,6 +5,7 @@ import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { AIChatComponent } from "@/components/ai-chat-component";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
@@ -40,6 +41,11 @@ export default function Page() {
             </BlurFade>
           </div>
         </div>
+      </section>
+      <section id="ai-chat">
+        <BlurFade delay={BLUR_FADE_DELAY * 2.5}>
+          <AIChatComponent className="mb-10" />
+        </BlurFade>
       </section>
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
-import { BackgroundBeams } from "@/components/ui/background-beams";
+
 import DarkVeil from '@/components/darkveil'
 
 
@@ -68,7 +68,6 @@ export default function RootLayout({
           <TooltipProvider delayDuration={0}>
             {children}
             <Navbar />
-            {/* <BackgroundBeams className="fixed pointer-events-none"/> */}
             <div className="fixed inset-0 pointer-events-none -z-10">
               <DarkVeil />
             </div>
