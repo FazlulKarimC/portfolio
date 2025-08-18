@@ -19,8 +19,12 @@ export function AIChatComponent({
             "mx-auto w-full",
             // Desktop/tablet: centered with max width and padding
             !isMobile && "max-w-2xl px-3 sm:px-4 lg:px-0",
-            // Mobile: full-width edge-to-edge
-            isMobile && "max-w-none px-0",
+            // Mobile: break out of parent width constraints
+            isMobile && chatState.isExpanded && [
+                "max-w-none px-0",
+                "w-screen", // Use viewport width
+                "relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]", // Break out of parent
+            ],
             className
         )}>
             <AnimatePresence mode="wait">

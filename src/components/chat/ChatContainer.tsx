@@ -59,10 +59,10 @@ export function ChatContainer({
             <Card 
                 className={cn(
                     "w-full flex flex-col shadow-lg border-border/50",
-                    // Responsive padding
-                    isMobile ? "p-3" : "p-3 sm:p-4",
-                    // Responsive border radius
-                    isMobile ? "rounded-lg" : "rounded-xl",
+                    // Responsive padding and border radius
+                    isMobile ? "p-3 rounded-none border-x-0" : "p-3 sm:p-4 rounded-xl",
+                    // Mobile: full width, desktop: constrained
+                    isMobile ? "w-screen" : "w-full"
                 )}
                 style={{ 
                     height: getResponsiveHeight(),
