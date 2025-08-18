@@ -272,17 +272,15 @@ export function ChatMessages({
         new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
     );
 
-    // Auto-scroll to latest message with responsive behavior
+    // Auto-scroll the INNER viewport only (avoid scrolling the page)
     useEffect(() => {
-        if (messagesEndRef.current) {
-            // Use different scroll behavior based on device and user preferences
-            const scrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
-            
-            messagesEndRef.current.scrollIntoView({
-                behavior: scrollBehavior,
-                block: 'end'
-            });
-        }
+        const viewport = scrollAreaRef.current?.querySelector(
+            '[data-radix-scroll-area-viewport]'
+        ) as HTMLElement | null;
+        if (!viewport) return;
+
+        const scrollBehavior: ScrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
+        viewport.scrollTo({ top: viewport.scrollHeight, behavior: scrollBehavior });
     }, [messages, isLoading, prefersReducedMotion]);
 
     // Function to render individual message based on sender type

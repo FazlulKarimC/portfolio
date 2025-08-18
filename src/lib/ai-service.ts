@@ -3,11 +3,11 @@ import { generateTemplateResponse, sanitizeUserInput, extractMessageTopics, vali
 // Configuration for AI service
 const AI_CONFIG = {
   maxRetries: 3,
-  retryDelay: 1000, // 1 second
-  timeout: 30000, // 30 seconds for real API calls
+  retryDelay: 1000,
+  timeout: 30000,
   maxTokens: 500,
   temperature: 0.7,
-  model: 'gemini-2.0-flash-exp', // Using Gemini 2.0 Flash
+  model: 'gemini-2.0-flash',
 } as const;
 
 
@@ -94,7 +94,7 @@ class RateLimiter {
  */
 class NetworkMonitor {
   private static instance: NetworkMonitor;
-  private isOnline = navigator.onLine;
+  private isOnline = typeof navigator !== 'undefined' ? navigator.onLine : true;
   private connectionSpeed: 'fast' | 'slow' | 'offline' = 'fast';
   private lastSpeedTest = 0;
 
@@ -130,8 +130,8 @@ class NetworkMonitor {
 
     try {
       const startTime = Date.now();
-      // Use a small image for speed test
-      const response = await fetch('/favicon.ico', { 
+      // Use a small asset for speed test
+      const response = await fetch('/favicon.ico', {
         method: 'HEAD',
         cache: 'no-cache'
       });

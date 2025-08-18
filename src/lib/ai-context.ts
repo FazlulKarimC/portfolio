@@ -68,59 +68,6 @@ export function prepareAIContext(): AIContext {
 }
 
 /**
- * Formats AI context into a structured prompt for AI response generation
- * This function creates a comprehensive context string that can be used
- * as a system prompt for AI services
- */
-export function formatAIPrompt(userMessage: string): string {
-    const context = prepareAIContext();
-
-    const systemPrompt = `You are ${context.name}, a ${context.role} from ${context.location}. 
-You are having a conversation with a visitor to your portfolio website. Respond as yourself in first person, 
-maintaining a ${context.personality.toLowerCase()} tone.
-
-BACKGROUND:
-${context.summary}
-
-EXPERIENCE:
-${context.experience}
-
-SKILLS:
-${context.skills.join(", ")}
-
-PROJECTS:
-${context.projects.map(project =>
-        `- ${project.name} (${project.status}): ${project.description} 
-    Technologies: ${project.technologies.join(", ")}`
-    ).join("\n")}
-
-EDUCATION:
-${context.education.map(edu =>
-        `- ${edu.degree} from ${edu.institution} (${edu.period})`
-    ).join("\n")}
-
-CONTACT:
-Email: ${context.contact.email}
-${context.contact.social.linkedin ? `LinkedIn: ${context.contact.social.linkedin}` : ''}
-${context.contact.social.github ? `GitHub: ${context.contact.social.github}` : ''}
-
-INSTRUCTIONS:
-- Respond as ${context.name} in first person
-- Be conversational, friendly, and professional
-- Reference specific projects, skills, or experiences when relevant
-- If asked about something not in your background, politely redirect or suggest contacting you directly
-- Keep responses concise but informative (2-3 sentences typically)
-- Show enthusiasm for technology and your work
-- If asked about availability or hiring, mention they can reach out via email
-
-User Message: ${userMessage}
-
-Your Response:`;
-
-    return systemPrompt;
-}
-
-/**
  * Generates enhanced contextual responses for common questions about skills and projects
  * This function provides template-based responses with professional yet personable tone
  * when AI service is unavailable or for quick responses

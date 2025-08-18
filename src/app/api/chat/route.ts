@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from '@google/generative-ai';
+import { GoogleGenAI } from '@google/genai';
 import { prepareAIContext } from '@/lib/ai-context';
 
-// Initialize Gemini AI
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
+// Initialize Gemini AI (new @google/genai SDK)
+const aiClient = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
 
 // Configuration
 const AI_CONFIG = {
-  model: 'gemini-2.0-flash-exp', // Using stable version
+  model: 'gemini-2.0-flash',
   maxTokens: 500,
   temperature: 0.7,
 } as const;
@@ -60,34 +60,7 @@ export async function POST(request: NextRequest) {
 
     console.log('Processing message:', message.substring(0, 50) + '...');
 
-    // Create the model with configuration
-    const model = genAI.getGenerativeModel({
-      model: AI_CONFIG.model,
-      generationConfig: {
-        temperature: AI_CONFIG.temperature,
-        maxOutputTokens: AI_CONFIG.maxTokens,
-        topP: 0.9,
-        topK: 40,
-      },
-      safetySettings: [
-        {
-          category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-          threshold: HarmBlockThreshold.BLOCK_NONE,
-        },
-        {
-          category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-          threshold: HarmBlockThreshold.BLOCK_NONE,
-        },
-        {
-          category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-          threshold: HarmBlockThreshold.BLOCK_NONE,
-        },
-        {
-          category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-          threshold: HarmBlockThreshold.BLOCK_NONE,
-        },
-      ],
-    });
+    // Generate response using new responses.generate API
 
     // Create the full prompt
     const systemPrompt = createFazlulSystemPrompt();
@@ -95,39 +68,25 @@ export async function POST(request: NextRequest) {
 
     console.log('Prompt length:', fullPrompt.length);
 
-    // Generate response
-    const result = await model.generateContent(fullPrompt);
+    // Generate response using @google/genai models API
+    const result = await aiClient.models.generateContent({
+      model: AI_CONFIG.model,
+      contents: fullPrompt,
+      config: {
+        temperature: AI_CONFIG.temperature,
+        maxOutputTokens: AI_CONFIG.maxTokens,
+        topP: 0.9,
+        topK: 40,
+      },
+    });
 
     console.log('Result received:', !!result);
-    console.log('Response object:', !!result.response);
-
-    const response = result.response;
-
-    // Check if response was blocked
-    if (!response) {
-      console.error('No response object received');
-      throw new Error('No response received from Gemini API');
-    }
-
-    // Check for safety ratings or blocking
-    if (response.promptFeedback?.blockReason) {
-      console.error('Prompt was blocked:', response.promptFeedback.blockReason);
-      throw new Error(`Prompt was blocked: ${response.promptFeedback.blockReason}`);
-    }
-
-    let text;
-    try {
-      text = response.text();
-      console.log('Text extracted successfully, length:', text?.length || 0);
-    } catch (textError) {
-      console.error('Error extracting text:', textError);
-      console.log('Response candidates:', response.candidates);
-      throw new Error('Failed to extract text from response');
-    }
+    const text = result.text;
+    console.log('Text extracted successfully, length:', text?.length || 0);
 
     if (!text || text.trim().length === 0) {
       console.error('Empty text from response');
-      console.log('Full response object:', JSON.stringify(response, null, 2));
+      console.log('Full result object:', JSON.stringify(result, null, 2));
       throw new Error('Empty response from Gemini API');
     }
 
